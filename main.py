@@ -7,7 +7,7 @@ Główne funkcjonalności:
     - Pojazd:
 
 """
-
+from datetime import datetime
 from operacje import *
 
 # Lista pojazdow
@@ -49,7 +49,7 @@ class Pojazd:
             return
 
     def __str__(self):
-        return f'{self.marka} {self.model} {self.rejestracja} {self.rocznik}'
+        return f'{pojazdy.index(self) + 1} {self.marka} {self.model} {self.rejestracja} {self.rocznik}'
 
     def wypisz_operacje(self, choice: int):
         if choice == 1:
@@ -126,8 +126,15 @@ def main():
     pojazdy.append(Pojazd('Nissan', 'Pathfinder', "GT987PK", 2013))
     pojazdy.append(Pojazd('Nissan', 'Patrol', "GS942LY", 2005))
     pojazdy.append(Pojazd('Ford', 'Transit', "GA223RR", 2023))
-    pojazdy.append(Pojazd('Opel', 'Movano', "RT259LL", 2006))
+    pojazdy.append(Pojazd('Opel', 'Astra', "RT259LL", 2006))
     pojazdy.append(Pojazd('Ford', 'Transit', "PO463AS", 2003))
+    pojazd: Pojazd = pojazdy[1]
+    pojazd.lista_serwisow_oleju.append(SerwisOleju(date(2023, 1, 12), 234734))
+    pojazd.lista_przegladow.append(PrzegladTechniczny(date(2023, 2, 9), False, 345323))
+    pojazd.lista_tankowan.append(Tankowanie(date(2023, 3, 10), 123222, 40))
+    pojazd.lista_serwisow_opon.append(SerwisOpon(date(2023, 1, 2), 344454))
+    pojazd.lista_wypadkow.append(Wypadek(date(2023, 2, 18), 566542, 0, 0))
+
     print('''
                       ⠀⠀ ⣀⣤⣤⣴⣶⣶⣿⠿⠿⠿⢿⣶⣶⣤⣀⣀⣀⣠⣤⣤⣦⠀⠀
         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⡿⠿⠛⠛⠉⠉⠀⠀⠀⠀⠀⠈⢿⡏⠉⢻⣿⣿⣿⣿⣿⡆⠀
@@ -171,7 +178,7 @@ def main():
             elif choice == 4:
                 print('- Stacja paliw -')
                 print('1 - Zatankuj')
-                print('2 - Wypisz wszystkie tankowania')
+                print('2 - Wypisz tankowania pojazdu')
                 print('0 - Wróć do głównego menu')
                 print('-' * 15)
                 t_menu = int(input('Tankowanie - podaj numer z menu: '))
@@ -184,7 +191,7 @@ def main():
             elif choice == 5:
                 print('- Stacja kontroli -')
                 print('1 - Dodaj przegląd')
-                print('2 - Wypisz wszystkie przeglądy')
+                print('2 - Wypisz przeglądy pojazdu')
                 print('0 - Wróć do głównego menu')
                 print('-' * 15)
                 p_menu = int(input('Przeglądy - podaj numer z menu: '))
@@ -197,7 +204,7 @@ def main():
             elif choice == 6:
                 print('- Warsztat opon -')
                 print('1 - Dodaj serwis opon')
-                print('2 - Wypisz wszystkie serwisy opon')
+                print('2 - Wypisz serwisy opon pojazdu')
                 print('0 - Wróć do głównego menu')
                 print('-' * 15)
                 op_menu = int(input('Opony - podaj numer z menu: '))
@@ -210,7 +217,7 @@ def main():
             elif choice == 7:
                 print('- Warsztat oleju -')
                 print('1 - Dodaj serwis oleju')
-                print('2 - Wypisz wszystkie serwisy oleju')
+                print('2 - Wypisz serwisy oleju pojazdu')
                 print('0 - Wróć do głównego menu')
                 print('-' * 15)
                 ol_menu = int(input('Tankowanie - podaj numer z menu: '))
@@ -223,7 +230,7 @@ def main():
             elif choice == 8:
                 print('- Kolizje i stłuczki -')
                 print('1 - Dodaj wypadek')
-                print('2 - Wypisz wszystkie wypadki')
+                print('2 - Wypisz wypadki pojazdu')
                 print('0 - Wróć do głównego menu')
                 print('-' * 15)
                 w_menu = int(input('Wypadki - podaj numer z menu: '))
