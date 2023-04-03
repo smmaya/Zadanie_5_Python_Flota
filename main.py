@@ -1,11 +1,17 @@
 """
 Sławomir Majchrzak | 60473 - INiN_6_PR2.1
+
 Program do zarządzania flotą pojazdów w firmie.
 
 Główne funkcjonalności:
-- Klasy:
-    - Pojazd:
-
+    - Wypisanie floty
+    - Dodawanie pojazdów
+    - Usuwanie pojazdów
+    - kontrole techniczne z obliczeniem dni do następnej kontroli
+    - Zarządzanie tankowaniami z obliczeniem średniego spalania
+    - Serwis opon
+    - Serwis oleju
+    - Rejestr wypadków
 """
 from pojazd import *
 
